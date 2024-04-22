@@ -52,10 +52,14 @@ Enter HuggingFace WRITE token from https://huggingface.co/settings/tokens and do
 pip install huggingface_hub[hf_transfer]
 export HF_HUB_ENABLE_HF_TRANSFER=1
 huggingface-cli download meta-llama/Meta-Llama-3-8B-Instruct --local-dir Meta-Llama-3-8B-Instruct
+
+huggingface-cli download meta-llama/Meta-Llama-3-70B-Instruct --local-dir Meta-Llama-3-70B-Instruct
 ```
 
 ```bash
-./catid_hessians.sh
+./catid_hessians_8.sh
+
+./catid_hessians_70.sh
 ```
 
 ```bash
