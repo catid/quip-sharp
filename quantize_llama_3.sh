@@ -2,7 +2,7 @@ CKPT=ckpt
 HF=hf
 LOG=log
 HESS=hess
-BASE=/home/catid/models/Meta-Llama-3-8B-Instruct
+BASE=Meta-Llama-3-8B-Instruct
 RESULT=llama3_8b_6144
 
 mkdir -p $CKPT $HF $LOG $HESS
