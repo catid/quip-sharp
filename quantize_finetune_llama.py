@@ -128,13 +128,19 @@ def quantize_llama_layer(layer, idx, cb, args, device, pre_orig_emb, orig_emb,
 
 
 def main(args):
+    print(f"MAIN")
+
     dtype_ = torch.float64 if args.use_fp64 else torch.float32
 
     cb = codebook.get_codebook(args.codebook)
 
+    print(f"Loading model...")
+
     model = AutoModelForCausalLM.from_pretrained(args.base_model,
                                                  torch_dtype='auto',
                                                  low_cpu_mem_usage=True)
+
+    print(f"Model loaded")
 
     # save configs
     all_config = {'quant_args': args, 'model_config': model.config}
@@ -233,6 +239,7 @@ def main(args):
 
 
 if __name__ == '__main__':
+    print(f"INIT")
     torch.set_grad_enabled(False)
     mp.set_start_method('spawn')
     mp.set_sharing_strategy('file_system')
