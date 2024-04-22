@@ -35,7 +35,12 @@ conda create -n qs python=3.10 -y && conda activate qs
 git clone https://github.com/catid/quip-sharp.git
 cd quip-sharp
 
+pip3 install --upgrade pip
 pip install -U -r requirements.txt
+
+cd quiptools
+python setup.py install
+cd ..
 
 huggingface-cli login
 ```
@@ -47,6 +52,29 @@ pip install huggingface_hub[hf_transfer]
 export HF_HUB_ENABLE_HF_TRANSFER=1
 huggingface-cli download meta-llama/Meta-Llama-3-8B-Instruct --local-dir Meta-Llama-3-8B-Instruct
 ```
+
+
+```bash
+
+./quantize_llama_3.sh
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Enter WandB API key from https://wandb.ai/authorize
 
