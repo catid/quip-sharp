@@ -8,7 +8,7 @@ RESULT=llama3_8b_6144
 mkdir -p $CKPT $HF $LOG $HESS
 
 # generate hessians (takes a while, only use this if there aren't pregenerated hessians)
-python hessian_offline_llama.py --batch_size 4 --devset_size 6144 --ctx_size 8192 --base_model $BASE --save_path $HESS/$RESULT
+python hessian_offline_llama.py --batch_size 8 --devset_size 6144 --ctx_size 8192 --base_model $BASE --save_path $HESS/$RESULT
 
 # quantize with finetuning
 python -m quantize_llama.quantize_finetune_llama --save_path $CKPT/$RESULT --codebook E8P12  --scale_override 0.9 --base_model $BASE  --hessian_path $HESS/$RESULT/ --devset_size 384 --ft_valid_size 128 >> $LOG/$RESULT 2>&1
