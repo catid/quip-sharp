@@ -55,10 +55,32 @@ huggingface-cli download meta-llama/Meta-Llama-3-8B-Instruct --local-dir Meta-Ll
 
 
 ```bash
+from lib.linear.quantized_linear import QuantizedLinear
+
+        self.down_proj = QuantizedLinear(
+            self.intermediate_size,
+            self.hidden_size,
+            config.quip_params['codesz'],
+            config.quip_params.get('packsz', 1),
+            config.quip_params.get('pack_out', False),
+            config.quip_params['idx_dtype'],
+            config.quip_params.get('codebook_version', 0),
+            rank=self.config.quip_params['lora_rank'],
+            rescale_WH=self.config.quip_params['rescale_WH'],
+            resid_scale_override=config.quip_params.get(
+                'resid_scale_override', -1),
+            train_mode=config.quip_params.get('train_mode', False),
+        )
+
+transformers.models.llama.modeling_llama
+
 ./quantize_llama_3.sh
 ```
 
-12:26
+1:13
+
+3 : 1:26
+4 1:28
 
 
 
